@@ -52,5 +52,7 @@ let flight_details1 = {
 let flight1 = new Flights(flight_details1)
 console.log(flight1);
 
-console.log(flight1.findFlightByNumber(12));
+console.log(flight1.findFlightByNumber(11));
+
+
 
