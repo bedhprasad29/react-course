@@ -1,0 +1,34 @@
+## React redux and Redux are different
+  Redux : is core library
+  React redux : is a bridge to connect react to redux
+
+  Redux toolkit gives new features and functionalities that eases using redux
+
+  First create a store using : configureStore({})
+   - Every application should have only one store (Single Source of Truth)
+
+  Crete a slice or call as features (which have reducers)
+  createSlice({
+    name: 
+    initialState: 
+    reducers: {
+        func1: (state, action) => {
+            // action.payload contains data send from useDispatch,
+            // State is current value in initialState
+            // if initialState is todos: push values using state.todos.push(todo)
+        },
+        func2: () => {},
+    }
+  })
+
+  // react-redux has two methods : 
+    useDispatch and useSelector
+
+    - we can use reducers inside dispatch 
+
+    To select values from store use : 
+    const todos = useSelector(state => state.todos)
+
+
+  // Diff in ContextAPI or Redux
+  : in Redux state is preserved, and in ContextAPI it is not
