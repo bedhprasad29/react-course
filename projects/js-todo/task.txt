@@ -1,0 +1,10 @@
+## To-Do List Application
+
+## Features:
+    1) Add Task: Users can add a new task to the list. Each task should have a title and a description.
+    2) Edit Task: Users can edit existing tasks.
+    3) Delete Task: Users can delete tasks from the list.
+    4) Mark Task as Completed: Users can mark tasks as completed, which will visually differentiate them from incomplete tasks.
+    5) Filter Tasks: Provide options to filter tasks (e.g., all tasks, completed tasks, incomplete tasks).
+    6) Local Storage: Save the tasks in the browser's local storage so that they persist even after the page is refreshed.
+    7) Responsive Design: Ensure the application is mobile-friendly.

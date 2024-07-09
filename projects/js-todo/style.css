@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todoCount {
+    margin-right: 2px;
+}
+
+.addTodo {
+    margin-top: 1rem;
+}
+
+.addTodo input {
+    padding: 6px;
+}
+
+.addTodo button {
+    color: white;
+    background-color: grey;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+table {
+    margin-top: 1rem;
+}
+
+table th {
+    padding: 0 4px;
+}

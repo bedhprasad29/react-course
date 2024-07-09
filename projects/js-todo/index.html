@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Todo</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1 class="center"><span id="todoCount">0</span> Todos</h1>
+    <div class="addTodo center">
+        <input type="text" name="todo" placeholder="Enter your Todo" id="todo">
+        <button type="submit" onclick="addTodo()">Add</button>
+    </div>
+
+    <table class="center">
+        <tr>
+            <th>Todo Name</th>
+            <th>Actions</th>
+        </tr>
+        <tr id="tableVal">
+        </tr>
+    </table>
+    <script src="./app.js"></script>
+</body>
+
+</html>
