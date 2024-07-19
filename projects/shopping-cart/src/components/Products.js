@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart } from '../feature/UserSlice'
+import { addToCart } from '../feature/DataSlice'
 
 export default function Products() {
     const products = useSelector(state => state.products)
-    const cartItems = useSelector(state => state.cartItems)
     const dispatch = useDispatch()
     return (
-        <>
+        <div className="display-content">
             <h1>Product Lists</h1>
             <ul>
                 {
@@ -17,11 +16,6 @@ export default function Products() {
                     ))
                 }
             </ul>
-            {
-                cartItems.map(item => (
-                    <li>{item.name}</li>
-                ))
-            }
-        </>
+        </div>
     )
 }

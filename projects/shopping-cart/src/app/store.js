@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import UserSlice from '../feature/UserSlice'
+import DataSlice from '../feature/DataSlice'
 
 export const store = configureStore({
-    reducer: UserSlice,
+    reducer: DataSlice,
 })

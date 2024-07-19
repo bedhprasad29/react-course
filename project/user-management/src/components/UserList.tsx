@@ -16,7 +16,7 @@ function UserList() {
     const [loading, setLoading] = useState(false)
     const [page, setPage] = useState(1)
     const [filter, setFilter] = useState('')
-    const [selectedUser, setSelectedUser] = useState<Number | null>(0)
+    const [selectedUser, setSelectedUser] = useState<number | null>(0)
 
     useEffect(() => {
         setLoading(true)
@@ -32,12 +32,9 @@ function UserList() {
     }, [page]);
     console.log('u', users);
 
-
-
     if (loading) return <p>Loading ...</p>
 
     const filteredUsers: UserInterface[] = users.filter(user => `${user?.first_name} ${user?.last_name}`.toLowerCase().includes(filter.toLowerCase()))
-
     console.log('fu', filteredUsers);
 
     return (

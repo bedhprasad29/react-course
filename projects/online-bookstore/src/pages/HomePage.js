@@ -1,30 +1,31 @@
-import BooksList from "./BookList";
-import { useState, useEffect } from 'react'
-import { fetchBooks } from "../services/api";
-import CreateBook from "../components/CreateBook";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import BooksList from './BookList';
+import { fetchBookData } from '../redux/BookSlice';
+import CreateBook from '../components/CreateBook';
 
 const HomePage = () => {
-    const [books, setBooks] = useState([])
-    const [createBook, setCreateBook] = useState(false)
+    const dispatch = useDispatch();
+    const books = useSelector((state) => state.books.books);
+    const status = useSelector((state) => state.books.status);
+    const error = useSelector((state) => state.books.error);
+
+    const [createBook, setCreateBook] = useState(false);
 
     useEffect(() => {
-        async function getAllBooks() {
-            try {
-                const books = await fetchBooks();
-                setBooks(books)
-            } catch (error) {
-                console.log('Error in fetching books : ', error);
-            }
+        if (status === 'idle') {
+            dispatch(fetchBookData()); // Dispatch the async thunk action
         }
-        getAllBooks()
-    }, [])
+    }, [dispatch, status]);
 
     return (
         <>
             <div>
                 <h1 className="text-center">Online Bookstore Homepage</h1>
                 <button className="text-end mb-2" onClick={() => { setCreateBook(true) }}> Create Book</button>
-                <BooksList books={books} />
+                {status === 'loading' && <p>Loading...</p>}
+                {status === 'failed' && <p>Error: {error}</p>}
+                {status === 'succeeded' && <BooksList books={books} />}
             </div>
             {createBook && <CreateBook />}
         </>

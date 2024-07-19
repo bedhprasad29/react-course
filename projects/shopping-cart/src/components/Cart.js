@@ -1,24 +1,21 @@
-import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFromCart } from '../feature/DataSlice'
 
 export default function Cart() {
-    const item = [{ id: 1, name: "IPhone" }, { id: 2, name: "Cover" }]
-
-    const [items, setItems] = useState(item)
-
-    const handleItemDelete = (id) => {
-        setItems(items.filter(item => item.id !== id))
-    }
-
+    const cartItems = useSelector(state => state.cartItems)
+    const dispatch = useDispatch()
     return (
-        <div className="container mt-4">
-            <h2>Shopping Cart</h2>
-            {items.map(item => (
-                <div key={item.id} className="items">
-                    <p>{item.name}</p>
-                    <button onClick={handleItemDelete(item.id)}>X</button>
-                </div>
-            ))}
-            <button className="btn btn-success">Checkout</button>
+        <div className="display-content">
+            <h1>Cart Items</h1>
+            <ul>
+                {
+                    cartItems.map(item => (
+                        <li key={item.id}>{item.name}
+                            <button onClick={() => dispatch(removeFromCart(item.id))}>Remove</button>
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
     );
 }

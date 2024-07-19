@@ -6,7 +6,7 @@ const initialState = {
     products: [{ id: 1, name: "Iphone" }, { id: 2, name: "Dumbell" }],
 }
 
-const UserSlice = createSlice({
+const DataSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
@@ -22,7 +22,7 @@ const UserSlice = createSlice({
         },
         updateUser: (state, action) => { },
         removeUser: (state, action) => {
-            state.users = state.users.filter(user => user.id != action.payload)
+            state.users = state.users.filter(user => user.id !== action.payload)
         },
         addToCart: (state, action) => {
             const item = {
@@ -31,10 +31,14 @@ const UserSlice = createSlice({
             }
 
             state.cartItems.push(item)
-        }
+        },
+        removeFromCart: (state, action) => {
+            state.cartItems = state.cartItems.filter(item => item.id !== action.payload)
+        },
+
     }
 })
 
-export const { addUser, updateUser, removeUser, addToCart } = UserSlice.actions
+export const { addUser, updateUser, removeUser, addToCart, removeFromCart } = DataSlice.actions
 
-export default UserSlice.reducer
+export default DataSlice.reducer
