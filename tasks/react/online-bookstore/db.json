@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "johndoe",
       "email": "john@example.com",
       "password": "hashed_password_1",
@@ -9,7 +9,7 @@
       "createdAt": "2023-01-15T10:30:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "janedoe",
       "email": "jane@example.com",
       "password": "hashed_password_2",
@@ -17,7 +17,7 @@
       "createdAt": "2023-02-20T14:45:00Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "bobsmith",
       "email": "bob@example.com",
       "password": "hashed_password_3",
@@ -25,7 +25,7 @@
       "createdAt": "2023-03-10T09:15:00Z"
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "alicejohnson",
       "email": "alice@example.com",
       "password": "hashed_password_4",
@@ -33,7 +33,7 @@
       "createdAt": "2023-04-05T16:20:00Z"
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "charliebrooks",
       "email": "charlie@example.com",
       "password": "hashed_password_5",
@@ -43,8 +43,8 @@
   ],
   "books": [
     {
-      "id": 1,
-      "title": "To Kill a Mockingbird",
+      "id": "1",
+      "title": "To Kill a Mockingbird 123",
       "author": "Harper Lee",
       "isbn": "9780446310789",
       "publishedDate": "1960-07-11",
@@ -55,7 +55,7 @@
       "coverImage": "https://picsum.photos/200/300"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "1984",
       "author": "George Orwell",
       "isbn": "9780451524935",
@@ -67,7 +67,7 @@
       "coverImage": "https://picsum.photos/200"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
       "isbn": "9780141439518",
@@ -79,7 +79,7 @@
       "coverImage": "https://picsum.photos/200/300"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "isbn": "9780743273565",
@@ -89,23 +89,11 @@
       "price": 11.99,
       "stock": 25,
       "coverImage": "https://picsum.photos/200"
-    },
-    {
-      "id": 5,
-      "title": "To the Lighthouse",
-      "author": "Virginia Woolf",
-      "isbn": "9780156907392",
-      "publishedDate": "1927-05-05",
-      "genre": "Modernist",
-      "description": "A landmark novel of high modernism, centering on the Ramsay family.",
-      "price": 13.99,
-      "stock": 20,
-      "coverImage": "https://picsum.photos/seed/picsum/200/300"
     }
   ],
   "reviews": [
     {
-      "id": 1,
+      "id": "1",
       "bookId": 1,
       "userId": 3,
       "rating": 5,
@@ -113,7 +101,7 @@
       "createdAt": "2023-06-15T08:30:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "bookId": 1,
       "userId": 4,
       "rating": 4,
@@ -121,7 +109,7 @@
       "createdAt": "2023-06-16T14:45:00Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "bookId": 2,
       "userId": 1,
       "rating": 5,
@@ -129,7 +117,7 @@
       "createdAt": "2023-06-17T11:20:00Z"
     },
     {
-      "id": 4,
+      "id": "4",
       "bookId": 3,
       "userId": 2,
       "rating": 4,
@@ -137,7 +125,7 @@
       "createdAt": "2023-06-18T09:10:00Z"
     },
     {
-      "id": 5,
+      "id": "5",
       "bookId": 4,
       "userId": 5,
       "rating": 3,
@@ -147,7 +135,7 @@
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "books": [
         {
@@ -164,7 +152,7 @@
       "createdAt": "2023-06-20T10:30:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 4,
       "books": [
         {
@@ -181,7 +169,7 @@
       "createdAt": "2023-06-21T15:45:00Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": 3,
       "books": [
         {
@@ -194,7 +182,7 @@
       "createdAt": "2023-06-22T09:20:00Z"
     },
     {
-      "id": 4,
+      "id": "4",
       "userId": 2,
       "books": [
         {
@@ -217,7 +205,7 @@
   ],
   "cart": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 5,
       "books": [
         {
@@ -231,7 +219,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 3,
       "books": [
         {
@@ -247,7 +235,7 @@
   ],
   "wishlist": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "bookIds": [
         2,
@@ -255,13 +243,33 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 4,
       "bookIds": [
         1,
         3,
         4
       ]
+    }
+  ],
+  "menus": [
+    {
+      "id": "1",
+      "name": "Home",
+      "link": "/",
+      "icon": ""
+    },
+    {
+      "id": "2",
+      "name": "Books",
+      "link": "/books",
+      "icon": ""
+    },
+    {
+      "id": "3",
+      "name": "Users",
+      "link": "/users",
+      "icon": ""
     }
   ]
 }
