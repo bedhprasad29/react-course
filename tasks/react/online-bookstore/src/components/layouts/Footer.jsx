@@ -9,9 +9,9 @@ export default function Footer() {
                     </div>
 
                     <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-                        <li className="ms-3"><a className="text-muted"><img src={require('../../assets/icons/fb.webp')} alt="" width="20px" height="20px" /></a></li>
+                        {/* <li className="ms-3"><a className="text-muted"><img src={require('../../assets/icons/fb.webp')} alt="" width="20px" height="20px" /></a></li>
                         <li className="ms-3"><a className="text-muted"><img src={require('../../assets/icons/twitter.webp')} alt="" width="20px" height="20px" /></a></li>
-                        <li className="ms-3"><a className="text-muted"><img src={require('../../assets/icons/instagram.webp')} alt="" width="20px" height="20px" /></a></li>
+                        <li className="ms-3"><a className="text-muted"><img src={require('../../assets/icons/instagram.webp')} alt="" width="20px" height="20px" /></a></li> */}
                     </ul>
                 </footer>
             </div>

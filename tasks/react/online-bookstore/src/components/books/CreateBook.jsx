@@ -38,20 +38,12 @@ export default function CreateBook() {
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="modal-body">
-                            <div className="mb-3">
-                                <label htmlFor="title" className="form-label">Book Title</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="title"
-                                    name="title"
-                                    value={book.title}
-                                    onChange={handleChange}
-                                    required
-                                />
+                            <div className="form-floating mb-3">
+                                <input type="text" className="form-control" id="title" name="title"
+                                    value={book?.title} onChange={handleChange} required />
+                                <label htmlFor='title'>Book Title</label>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="author" className="form-label">Author</label>
+                            <div className="form-floating mb-3">
                                 <input
                                     type="text"
                                     className="form-control"
@@ -61,6 +53,11 @@ export default function CreateBook() {
                                     onChange={handleChange}
                                     required
                                 />
+                                <label htmlFor="author">Author</label>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Book Description</label>

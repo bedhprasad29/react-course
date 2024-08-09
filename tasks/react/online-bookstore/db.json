@@ -2,10 +2,11 @@
   "users": [
     {
       "id": "1",
-      "username": "johndoe",
-      "email": "john@example.com",
-      "password": "hashed_password_1",
-      "role": "user",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "password",
+      "role": "admin",
+      "token": "erewrwer4343434fd",
       "createdAt": "2023-01-15T10:30:00Z"
     },
     {
@@ -18,10 +19,11 @@
     },
     {
       "id": "3",
-      "username": "bobsmith",
-      "email": "bob@example.com",
+      "username": "user",
+      "email": "user@gmail.com",
       "password": "hashed_password_3",
       "role": "user",
+      "token": "erewrwer4343434fd",
       "createdAt": "2023-03-10T09:15:00Z"
     },
     {
@@ -39,6 +41,15 @@
       "password": "hashed_password_5",
       "role": "user",
       "createdAt": "2023-05-12T11:55:00Z"
+    },
+    {
+      "id": "3e18",
+      "username": "abc",
+      "email": "abc@gmail.com",
+      "phone": "",
+      "password": "",
+      "confirmPassword": "",
+      "role": "user"
     }
   ],
   "books": [
@@ -89,6 +100,20 @@
       "price": 11.99,
       "stock": 25,
       "coverImage": "https://picsum.photos/200"
+    },
+    {
+      "id": "6cae",
+      "title": "New Book",
+      "author": "New Author",
+      "description": "",
+      "isbn": ""
+    },
+    {
+      "id": "98c5",
+      "title": "Some other",
+      "author": "Harper Lee",
+      "description": "",
+      "isbn": ""
     }
   ],
   "reviews": [
