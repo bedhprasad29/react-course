@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react'
-import { fetchAllPosts } from '../../services/blogs'
+import { useEffect, useMemo, useState } from 'react'
 import { ShimmerTable } from 'react-shimmer-effects'
 import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import Create from './Create'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPosts } from '../../features/PostSlice'
 
 function List() {
-    const [posts, setPosts] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const dispatch = useDispatch()
+    const allPosts = useSelector(state => state.posts.posts)
+    const [posts, setPosts] = useState(allPosts)
+    const status = useSelector(state => state.posts.status)
+    // const error = useSelector(state => state.posts.error)
+    const [filterTitle, setFilterTitle] = useState('')
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                setIsLoading(true)
-                const posts = await fetchAllPosts()
-                setPosts(posts)
-                setIsLoading(false)
-            } catch (error) {
-                console.error("error fetching posts", error)
-                setIsLoading(false)
-            }
+        if (status === 'idle') {
+            dispatch(fetchPosts())
         }
-
-        fetchPosts()
-    }, [])
+    }, [status, dispatch])
 
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this item?");
@@ -39,35 +34,39 @@ function List() {
         }
     };
 
+    const filteredPosts = useMemo(() => {
+        return posts.filter((post) => post.title.toLowerCase().includes(filterTitle.toLowerCase()))
+    }, [posts, filterTitle])
+
     return (
         <>
             <div className="d-flex justify-content-between align-items-center m-5">
                 <h1>Blogs List</h1>
-                <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createBlog">Create</button>
+                <div>
+                    <input type="text" className='p-1 rounded' placeholder='Search Title' value={filterTitle} onChange={(e) => setFilterTitle(e.target.value)} />
+                    <button className="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#createBlog">Create</button>
+                </div>
             </div>
             <div className="row m-4">
-                {isLoading ? (
+                {status === 'loading' ? (
                     <ShimmerTable row={4} col={4} />
-                    // <p>Loading...</p>
                 ) : (
                     <table className="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">User Id</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Actions</th>
                             </tr >
                         </thead >
                         <tbody>
-                            {posts.map((post) => (
+                            {filteredPosts?.map((post) => (
                                 <tr key={post.id}>
                                     <th scope="row">{post.id}</th>
                                     <td>{post.title}</td>
-                                    <td>{post.author}</td>
                                     <td>
-                                        {/* <Link to={`/posts/${post.id}`} className="btn btn-primary me-1">View</Link>
-                                        <Link to={`/posts/update/${post.id}`} className="btn btn-primary me-1">Edit</Link> */}
+                                        <Link to={`/posts/${post.id}`} className="btn btn-primary me-1">View</Link>
+                                        <Link to={`/posts/update/${post.id}`} className="btn btn-primary me-1">Edit</Link>
                                         <button className="btn btn-danger" onClick={() => handleDelete(post.id)}>Delete</button>
                                     </td>
                                 </tr>

@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../features/UserSlice";
 
 export const Navbar = () => {
-    // const token = localStorage.getItem('token')
-    const token = "sfsdfsdfsdg"
+    const user = useSelector(state => state.users.loggedInUser)
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const handleLogout = () => {
-        localStorage.removeItem('token')
+        dispatch(logout())
         navigate('/login')
     }
 
@@ -15,7 +17,7 @@ export const Navbar = () => {
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            {token ? (
+            {user ? (
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto">
                         <li className="nav-item">

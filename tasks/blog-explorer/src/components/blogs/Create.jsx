@@ -1,47 +1,46 @@
 import { useState } from 'react';
-import { createPost } from "../../services/blogs"
+import { createPost } from "../../services/posts"
 import { useNavigate } from 'react-router-dom';
 
 export default function Create() {
-    const initialBook = {
+    const initialPost = {
         title: '',
         author: '',
         description: '',
-        isbn: ''
     };
 
-    const [book, setBook] = useState(initialBook);
+    const [post, setPost] = useState(initialPost);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setBook((prevBook) => ({
-            ...prevBook,
+        setPost((prevPost) => ({
+            ...prevPost,
             [name]: value,
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createPost(book)
-        setBook(initialBook);
-        navigate('/books')
+        createPost(post)
+        setPost(initialPost);
+        navigate('/blogs')
     };
 
     return (
-        <div className="modal fade" id="createBook" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="createBlog" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Add Book</h5>
+                        <h5 className="modal-title" id="exampleModalLabel">Add Blog</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="modal-body">
                             <div className="form-floating mb-3">
                                 <input type="text" className="form-control" id="title" name="title"
-                                    value={book?.title} onChange={handleChange} required />
-                                <label htmlFor='title'>Book Title</label>
+                                    value={post?.title} onChange={handleChange} required />
+                                <label htmlFor='title'>Blog Title</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input
@@ -49,41 +48,27 @@ export default function Create() {
                                     className="form-control"
                                     id="author"
                                     name="author"
-                                    value={book.author}
+                                    value={post?.author}
                                     onChange={handleChange}
                                     required
                                 />
                                 <label htmlFor="author">Author</label>
                             </div>
-                            <div className="form-floating mb-3">
-                                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label htmlFor="floatingInput">Email address</label>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="description" className="form-label">Book Description</label>
+                            <div className="form-floating">
                                 <textarea
                                     className="form-control"
                                     id="description"
                                     name="description"
-                                    value={book.description}
+                                    placeholder="Add blog description here"
+                                    value={post?.description}
                                     onChange={handleChange}
                                 />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="isbn" className="form-label">Book ISBN</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="isbn"
-                                    name="isbn"
-                                    value={book.isbn}
-                                    onChange={handleChange}
-                                />
+                                <label htmlFor="description" className="form-label">Blog Description</label>
                             </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Add Book</button>
+                            <button type="submit" className="btn btn-primary">Add Blog</button>
                         </div>
                     </form>
                 </div>
