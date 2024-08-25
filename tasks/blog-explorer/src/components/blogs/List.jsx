@@ -1,18 +1,22 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ShimmerTable } from 'react-shimmer-effects'
 import toast, { Toaster } from 'react-hot-toast'
-import { Link } from 'react-router-dom'
 import Create from './Create'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPosts } from '../../features/PostSlice'
+import { fetchPosts } from '../../redux/features/PostSlice'
+import Edit from './Edit'
+import Button from 'react-bootstrap/Button'
 
 function List() {
     const dispatch = useDispatch()
     const allPosts = useSelector(state => state.posts.posts)
     const [posts, setPosts] = useState(allPosts)
     const status = useSelector(state => state.posts.status)
-    // const error = useSelector(state => state.posts.error)
     const [filterTitle, setFilterTitle] = useState('')
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         if (status === 'idle') {
@@ -65,9 +69,12 @@ function List() {
                                     <th scope="row">{post.id}</th>
                                     <td>{post.title}</td>
                                     <td>
-                                        <Link to={`/posts/${post.id}`} className="btn btn-primary me-1">View</Link>
-                                        <Link to={`/posts/update/${post.id}`} className="btn btn-primary me-1">Edit</Link>
-                                        <button className="btn btn-danger" onClick={() => handleDelete(post.id)}>Delete</button>
+                                        {/* <Link to={`/posts/${post.id}`} className="btn btn-primary me-1">View</Link> */}
+                                        {/* <Link to={`/posts/update/${post.id}`} className="btn btn-primary me-1">Edit</Link> */}
+                                        <Button variant="primary" onClick={handleShow}> Edit
+                                            <Edit postId={post.id} handleClose={handleClose} show={show} />
+                                        </Button>
+                                        <button className="btn btn-danger ms-2" onClick={() => handleDelete(post.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}

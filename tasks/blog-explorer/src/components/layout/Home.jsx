@@ -1,9 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Card from '../blogs/Card'
 
 function Home() {
+    const posts = useSelector(state => state.posts.posts)
+
     return (
-        <div>
-            Home Page
+        <div className="row mt-3">
+            {posts?.map(post => (
+                <Card post={post} key={post.id} />
+            ))}
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAllUsers } from '../services/users';
+import { fetchAllUsers } from '../../services/users';
 
 const initialState = {
     users: [],
@@ -36,6 +36,7 @@ const userSlice = createSlice({
     reducers: {
         logout(state) {
             state.loggedInUser = null;
+            state.error = null;
         },
     },
     extraReducers: (builder) => {
