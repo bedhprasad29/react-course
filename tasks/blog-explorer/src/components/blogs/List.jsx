@@ -10,13 +10,21 @@ import Button from 'react-bootstrap/Button'
 function List() {
     const dispatch = useDispatch()
     const allPosts = useSelector(state => state.posts.posts)
-    const [posts, setPosts] = useState(allPosts)
     const status = useSelector(state => state.posts.status)
+    const [posts, setPosts] = useState(allPosts)
     const [filterTitle, setFilterTitle] = useState('')
-    const [show, setShow] = useState(false);
+    const [editModal, setEditModal] = useState(false);
+    const [currentPost, setCurrentPost] = useState(null);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleEditClick = (post) => {
+        setCurrentPost(post);
+        setEditModal(true);
+    };
+
+    const handleFormCloseModal = () => {
+        setEditModal(false);
+        setCurrentPost(null);
+    };
 
     useEffect(() => {
         if (status === 'idle') {
@@ -28,7 +36,6 @@ function List() {
         const confirmDelete = window.confirm("Are you sure you want to delete this item?");
         if (confirmDelete) {
             try {
-                // await deleteBook(id);
                 setPosts((prevPosts) => prevPosts.filter(post => post.id !== id));
                 toast.success('Book deleted successfully');
             } catch (error) {
@@ -52,7 +59,7 @@ function List() {
                 </div>
             </div>
             <div className="row m-4">
-                {status === 'loading' ? (
+                {status === 'idle' ? (
                     <ShimmerTable row={4} col={4} />
                 ) : (
                     <table className="table table-bordered">
@@ -69,11 +76,7 @@ function List() {
                                     <th scope="row">{post.id}</th>
                                     <td>{post.title}</td>
                                     <td>
-                                        {/* <Link to={`/posts/${post.id}`} className="btn btn-primary me-1">View</Link> */}
-                                        {/* <Link to={`/posts/update/${post.id}`} className="btn btn-primary me-1">Edit</Link> */}
-                                        <Button variant="primary" onClick={handleShow}> Edit
-                                            <Edit postId={post.id} handleClose={handleClose} show={show} />
-                                        </Button>
+                                        <Button variant="primary" onClick={() => handleEditClick(post)}> Edit </Button>
                                         <button className="btn btn-danger ms-2" onClick={() => handleDelete(post.id)}>Delete</button>
                                     </td>
                                 </tr>
@@ -84,6 +87,10 @@ function List() {
                 }
             </div>
             <Create />
+            <Edit show={editModal}
+                handleClose={handleFormCloseModal}
+                title={currentPost?.title}
+                body={currentPost?.body} />
             <Toaster position="top-right" />
         </>
     )

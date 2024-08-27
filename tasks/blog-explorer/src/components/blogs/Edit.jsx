@@ -1,23 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostById } from '../../redux/features/PostSlice';
 
-function Edit({ postId, show, handleClose }) {
-    const dispatch = useDispatch();
-
-    const { posts, state } = useSelector(state => state.posts)
-    useEffect(() => {
-        if (postId) {
-            dispatch(fetchPostById())
-        }
-
-    }, [])
-    console.log(posts);
-    const post = posts
-
+function Edit({ show, handleClose, title, body }) {
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -30,7 +15,7 @@ function Edit({ postId, show, handleClose }) {
                         <Form.Control
                             type="text"
                             placeholder="Your title"
-                            defaultValue={post?.title}
+                            defaultValue={title}
                             autoFocus
                         />
                     </Form.Group>
@@ -39,7 +24,7 @@ function Edit({ postId, show, handleClose }) {
                         controlId="exampleForm.ControlTextarea1"
                     >
                         <Form.Label>Blog Body</Form.Label>
-                        <Form.Control as="textarea" rows={3} defaultValue={post?.body} />
+                        <Form.Control as="textarea" rows={3} defaultValue={body} />
                     </Form.Group>
                 </Form>
             </Modal.Body>

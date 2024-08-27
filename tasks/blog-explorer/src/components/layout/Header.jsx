@@ -18,7 +18,7 @@ export default function Header() {
                 <Routes>
                     {/* <Route path='/' element={<RouteGuard component={Home} />} /> */}
                     <Route path='/' element={<Home />} />
-                    <Route path='/users' element={<UserList />} />
+                    {/* <Route path='/users' element={<UserList />} /> */}
                     <Route path='/blogs' element={<BlogList />} />
                     <Route path="/blog/:id" element={<BlogDetails />} />
                     {/* <Route path="/books/update/:id" element={<UpdateBook />} /> */}

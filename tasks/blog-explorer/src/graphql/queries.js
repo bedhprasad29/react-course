@@ -22,8 +22,6 @@ export const GET_COMMENTS_BY_POST_ID = gql`
 `;
 
 
-//comments?postId=1
-
 export const GET_POSTS = gql`
   query GetPosts {
     posts @rest(type: "Post", path: "posts") {
